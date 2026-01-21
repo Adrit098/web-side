@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildlife Interactive Portal</title>
+    <style>
+        /* Base Reset and Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 
+Top Title with Border */
+        .main-title {
+            text-align: center;
+            border: 4px solid #4CAF50;
+            padding: 15px;
+            color: #4CAF50;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-size: 2.5em;
+        }
+
+        /* Main Content Container */
+        .container {
+            display: flex;
+            gap: 25px;
+            background: #121212;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            flex: 1;
+        }
+
+        /* Left Sidebar Styling */
+        .sidebar {
+            flex: 0.6;
+            border-right: 1px solid #444;
+            padding-right: 20px;
+        }
+
+        .sidebar h2 {
+            color: #4CAF50;
+            margin-top: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 18px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #64B5F6;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #ffffff;
+            transform: translateX(10px);
+        }
+
+        /* Right Content Display Area */
+        .display-area {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Side-by-Side Boxes for Image and Video */
+        .media-row {
+            display: flex;
+            gap: 20px;
+            height: 320px;
+        }
+
+        .box {
+            flex: 1;
+            background: #1a1a1a;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Description Box Styling */
+        .description-section {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #4CAF50;
+            line-height: 1.6;
+        }
+
+        .description-section h3 {
+            color: #4CAF50;
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        .description-section p {
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        /* Bottom Navigation Buttons */
+        .footer-nav {
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            margin: 5px 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #4CAF50;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .media-row {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .box {
+                height: 250px;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #444;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="main-title">Wildlife</h1>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Animals</h2>
+            <ul>
+                <li><a onclick="showAnimal('lion')">1. Lion</a></li>
+                <li><a onclick="showAnimal('leopard')">2. Leopard</a></li>
+                <li><a onclick="showAnimal('jaguar')">3. Jaguar</a></li>
+                <li><a onclick="showAnimal('tiger')">4. Tiger</a></li>
+                <li><a onclick="showAnimal('panther')">5. Panthera</a></li>
+                <li><a href="panther.html">6. Bear</a></li>
+            </ul>
+        </div>
+        <div class="display-area">
+            <div class="media-row">
+                <div class="box">
+                    <img id="display-img" src="https://images.unsplash.com/photo-1546182990
+dffeafbe841d?w=800" alt="Wildlife">
+                </div>
+                <div class="box">
+                    <iframe id="display-vid" src="https://www.youtube.com/embed/bS_v6pW2EAs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="description-section">
+                <h3 id="display-name">Lion</h3>
+                <p id="display-desc">The lion (Panthera leo) is a large cat of the genus Panthera native to
+                    Africa and India. It has a muscular, deep-chested body, short, rounded head, round ears, and a hairy
+                    tuft at the end of its tail. It is sexually dimorphic; adult male lions are larger than females and
+                    have a
+                    prominent mane.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-nav">
+        <a href="#" class="btn">Home</a>
+        <a href="#" class="btn">Gallery</a>
+        <a href="#" class="btn">About</a>
+        <a href="#" class="btn">Contact</a>
+    </div>
+    <!-- <script>
+        const animalData = {
+            lion: {
+                name: "Lion",
+                img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800",
+                vid:
+                    "https://www.youtube.com/embed/bS_v6pW2EAs",
+                desc: "Known as the 'King of Beasts', the lion is famous for its majestic mane and powerful roar that can be heard up to 5 miles away.They are the only cats that live in large social groups called prides."
+            },
+            leopard: {
+                name: "Leopard",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn: ANd9GcSuv1RQJ53y8ItdenkYhRRDqKu1gd3WAvKGKZp0DkMruM4G7zH69IInsgKaMwGsltXh2tpG- vFvAR5 - 0mTr2PdnGrjWLdDRXlWy0jvntg& s=10",
+        vid:
+        "https://www.youtube.com/embed/F6mN-P8D8e4",
+            desc: "Leopards are the most widely distributed of all wild cats. They are incredibly strong and are famous for dragging heavy prey high into trees to protect it from other predators."
+            },
+        jaguar: {
+            name: "Jaguar",
+                img: "https://images.unsplash.com/photo-1590005354167-6da97870c91d?w=800",
+                    vid:
+            "https://www.youtube.com/embed/P_P_KBeYvsw",
+                desc: "The Jaguar is the third-largest feline in the world. Unlike many other cats, jaguars do not avoid water; in fact, they are quite good swimmers and hunt fish, turtles, and even small caimans."
+        },
+        tiger: {
+            name: "Tiger",
+                img: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=800",
+                    vid:
+            "https://www.youtube.com/embed/Oto_NshX37Y",
+                desc: "Tigers are the largest cats in the world. Each tiger has a unique set of stripes, much like human fingerprints.They are solitary hunters and can leap up to 10 meters in a single bound."
+        },
+        panther: {
+            name: "Black Panther",
+                img: "https://images.unsplash.com/photo-1615865417491-9941019fbc00?w=800",
+                    vid:
+            "https://www.youtube.com/embed/v9qY6eK_Vd4",
+                desc: "Black Panthers are not a separate species, but are actually melanistic leopards or jaguars.Their dark coat provides excellent camouflage for hunting at night."
+        },
+        bear: {
+            name: "Grizzly Bear",
+                img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=800",
+                    vid:
+            "https://www.youtube.com/embed/6_6vS69tY7E",
+                desc: "Grizzly bears are massive animals with a distinctive hump on their shoulders. They are omnivores with an incredible sense of smell, able to detect food from miles away."
+        }
+        };
+        function showAnimal(key) {
+            const animal = animalData[key];
+            // Apply updates to the DOM
+            document.getElementById('display-img').src = animal.img;
+            document.getElementById('display-vid').src = animal.vid;
+            document.getElementById('display-name').innerText = animal.name;
+            document.getElementById('display-desc').innerText = animal.desc;
+        }
+    </script> -->
+</body>
+
+</html>
